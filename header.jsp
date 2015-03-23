@@ -4,7 +4,7 @@
 
 <% String host = request.getServerName(); %>
 
-<div id="mainwrapper" class="mainwrapper">
+<div id="mainwrapper" class="mainwrapper good">
     <header id="mainheader" class="mainheader">
         <div class="mainheader-top">
             <div class="wrap">
