@@ -106,25 +106,6 @@ function arrange(){
     return arr;
 }
 
-function arrange(){
-    var arr_or = [1,2,3,5,6,7];
-    var arr = [];
-
-    while(arr.length<6){
-        var num = random(arr_or.length);
-        if(arr.length==0){
-            if(num!=2 && num!=5){
-                arr = arr_or.splice(num, 2);
-            } else { continue; }
-        }
-        arr.push(Number(arr_or.splice(num, 1)));
-    }
-    return arr;
-}
-
-
-
-
 
 function arrange() {
     var arr = [1,2,3,5,6,7];
@@ -140,4 +121,21 @@ function arrange() {
         while()
         var num = random(arr_length);
     }
+}
+
+
+function arrange(){
+    var arr_or = [1,2,3,5,6,7];
+    var arr = [];
+
+    while(arr.length<6){
+        var num = random(arr_or.length);
+        if(arr.length==0){
+            if(num!=2 && num!=5){
+                arr = arr_or.splice(num, 2);
+            } else { continue; }
+        }
+        arr.push(Number(arr_or.splice(num, 1)));
+    }
+    return arr;
 }
