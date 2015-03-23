@@ -5,7 +5,7 @@
 <% String host = request.getServerName(); %>
 
 <div id="mainwrapper" class="mainwrapper good">
-    <header id="mainheader" class="mainheader">
+    <header id="mainheader">
         <div class="mainheader-top">
             <div class="wrap">
                 <a href="/" class="mainheader-logo"><i></i><span class="a11y">레진코믹스</span></a>
