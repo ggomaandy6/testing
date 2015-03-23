@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>프로모션 배너 배치 - 일일코딩</title>
+        <style>
+            body {
+                background: #fff;
+            }
+            #promotion-list {
+                background: #ccc;
+                height: 200px;
+                margin: 100px auto;
+                position: relative;
+                width: 400px;
+            }
+            img {
+                display: block;
+                height: 100px;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100px;
+            }
+            .is-double {
+                height: 100px;
+                width: 200px;
+            }
+            .is-half {
+                height: 50px;
+                width: 100px;
+            }
+            [data-pos="5"], [data-pos="6"], [data-pos="7"] {
+                top: 100px;
+            }
+            [data-pos="2"], [data-pos="6"] {
+                left: 100px;
+            }
+            [data-pos="3"], [data-pos="7"] {
+                left: 200px;
+            }
+            .is-half:last-child {
+                top: 50px;
+            }
+            .is-half[data-pos="5"]:last-child, .is-half[data-pos="6"]:last-child, .is-half[data-pos="7"]:last-child {
+                top: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="promotion-list">
+        </div>
+    </body>
+    <script>
+        var comicIds = ['bad_boss', 'sm_tiger', 'she_is_young', 'her_dog', 'ccromance', 'milkpudding', 'woori', 'nanakarou', 'nicetomeetyou', 'leopard', 'moonlight_night', 'revatoon', 'encounter', 'gbpark', 'sinhontto', 'roomshare', '34mujik', 'desertisland'];
+
+        function random(min, max) {
+            if (max === undefined) { max = min; min = 0; }
+            return Math.floor(Math.random() * (max - min+1)) + min;
+        }
+
+        function arrange() {
+            var positions = [1, 2, 3, 5, 6, 7];
+
+            var double = [1, 2, 5, 6][random(3)];
+            var doubleIndex = positions.indexOf(double);
+
+            positions.splice(doubleIndex, 2);
+
+            var half = positions[random(0, 4)];
+            var halfIndex = positions.indexOf(half);
+            positions.splice(halfIndex, 1);
+
+            positions.unshift(double);
+            positions.push(half);
+            return positions;
+        }
+
+        function makeTag(comicId, pos, className, size) {
+          var img = document.createElement('img');
+          img.setAttribute("class", className);
+          img.dataset.pos=pos;
+          img.src = 'http://cdn.lezhin.com/comics/'+comicId+'/images/'+size;
+          document.getElementById('promotion-list').appendChild(img);
+      }
+
+      window.onload = function() {
+          var posArr = arrange();
+          makeTag(comicIds[random(0, 2)], posArr[0], "is-double", "wide");
+          makeTag(comicIds[random(3, 5)], posArr[1], "", "square");
+          makeTag(comicIds[random(6, 8)], posArr[2], "", "square");
+          makeTag(comicIds[random(9, 11)], posArr[3], "", "square");
+          makeTag(comicIds[random(12, 14)], posArr[4], "is-half", "wide");
+          makeTag(comicIds[random(15, 17)], posArr[4], "is-half", "wide");  
+      };
+  </script>
+</html>
+
